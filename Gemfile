@@ -3,18 +3,25 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in devise_ip_filter.gemspec
 gemspec
 
-rails_version = ENV["RAILS_VERSION"] || "default"
+rails_version = ENV['RAILS_VERSION'] || 'default'
 
 rails = case rails_version
-        when "master"
-          {github: "rails/rails"}
-        when "default"
-          "~> 5.2"
+        when 'master'
+          { github: 'rails/rails' }
+        when 'default'
+          "~> 8.0.4"
         else
           "~> #{rails_version}"
         end
 
-gem "rails", rails
+gem 'rails', rails
+gem 'bundler'
+gem 'rake'
+gem 'rspec-rails', '>= 3.0.1'
+gem 'capybara', '~> 2.5'
+gem 'pry'
+gem 'timecop'
+gem 'rubocop'
 
 if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.2.0')
   gem "test-unit", "~> 3.0"
